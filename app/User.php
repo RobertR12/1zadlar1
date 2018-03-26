@@ -26,4 +26,19 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function prijatelj() {
+
+        return $this ->hasMany('App\prijatelj');
+    }
+
+    public function lokacija() {
+
+        return $this ->hasOne('App\lokacija');
+    }
+
+    public function pretplatnik() {
+
+        return $this ->hasMany('App\pretplatnik');
+    }
 }

@@ -22,6 +22,7 @@ class CreateUsersTable extends Migration
             $table->string('Lokacija');
             $table->timestamp('Created_at');
             $table->rememberToken();
+            $table->softDeletes();
         });
     }
 

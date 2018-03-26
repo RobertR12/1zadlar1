@@ -18,6 +18,7 @@ class CreatePretplatniciTable extends Migration
             $table->unsignedInteger('user_id');
             $table->foreign('user_id')->references('Id')->on('users');
             $table->decimal('Amount', 11,2);
+            $table->softDeletes();
 
         });
     }

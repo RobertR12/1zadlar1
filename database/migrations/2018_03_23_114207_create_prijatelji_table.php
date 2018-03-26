@@ -19,6 +19,7 @@ class CreatePrijateljiTable extends Migration
             $table->foreign('User_id')->references('Id')->on('users');
             $table->unsignedInteger('Friend_id');
             $table->foreign('Friend_id')->references('Id')->on('users');
+            $table->softDeletes();
         });
     }
 

@@ -17,6 +17,7 @@ class CreateLokacijeTable extends Migration
             $table->increments('Id');
             $table->string('Title');
             $table->string('Country');
+            $table->softDeletes();
         });
     }
 
