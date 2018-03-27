@@ -13,7 +13,7 @@ class CreateLokacijeTable extends Migration
      */
     public function up()
     {
-        Schema::create('lokacije', function (Blueprint $table) {
+        Schema::create('lokacijas', function (Blueprint $table) {
             $table->increments('Id');
             $table->string('Title');
             $table->string('Country');

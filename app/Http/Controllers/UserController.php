@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use App\User;
+use App\lokacija;
 
 class UserController extends Controller
 {
@@ -23,7 +26,15 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('create');
+
+
+        $lokacija =lokacija::pluck('Title', 'Country');
+
+        //$lokacija = DB::table('lokacije')->get();
+
+
+
+        return view('user.create', compact('lokacija'));
     }
 
     /**
@@ -36,8 +47,8 @@ class UserController extends Controller
     {
         $this->validate($request, array(
 
-            'first_name' => 'required',
-            'last_name'  => 'required',
+            'first_name' => 'required|max:255',
+            'last_name'  => 'required|max:255',
             'email'      => 'required',
             'password'   => 'required',
             'lokacija'   => 'required'
@@ -53,9 +64,9 @@ class UserController extends Controller
 
         $user ->save();
 
-        Session::flash('success', 'Korisnik uspjesno unesen!');
+        //Session::flash('success', 'Korisnik uspjesno unesen!');
 
-        return redirect()->route('user.show', $user->id);
+        return redirect()->route('User.show', $user->id);
 
     }
 

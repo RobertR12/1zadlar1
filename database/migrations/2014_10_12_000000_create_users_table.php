@@ -20,7 +20,7 @@ class CreateUsersTable extends Migration
             $table->string('Email')->unique();
             $table->string('Password');
             $table->string('Lokacija');
-            $table->timestamp('Created_at');
+            $table->timestamps();
             $table->rememberToken();
             $table->softDeletes();
         });
