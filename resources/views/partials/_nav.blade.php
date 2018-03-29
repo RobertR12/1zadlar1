@@ -24,7 +24,7 @@
                 <li><a href="user/create">Korisnik</a></li>
                 <li><a href="lokacija/create">Lokacija</a></li>
                 <li><a href="prijatelji/create">Prijatelji</a></li>
-                <li><a href="article/index">Index</a></li>
+                <li><a href="pretplatnik/create">Pretplate</a></li>
 
             </ul>
 

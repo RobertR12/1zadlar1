@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\User;
+use App\pretplatnik;
+use App\prijatelji;
 
 class PretplatnikController extends Controller
 {
@@ -23,7 +26,10 @@ class PretplatnikController extends Controller
      */
     public function create()
     {
-        //
+
+        $prijatelj= User::all('first_name', 'last_name');
+        $prijatelj->pluck('first_name', 'last_name');
+        return view('pretplate.create', compact('prijatelj') );
     }
 
     /**
@@ -34,7 +40,15 @@ class PretplatnikController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $pretplata = new pretplatnik;
+
+        $pretplata -> User_id = $request -> prijatelj1;
+        $pretplata -> Amount  = $request -> Amount;
+
+
+        $pretplata ->save();
+
+        return redirect('/');
     }
 
     /**

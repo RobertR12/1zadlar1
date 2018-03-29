@@ -32,7 +32,8 @@ class UserController extends Controller
         //$lokacija =lokacija::pluck('Title', 'Country');
 
         $lokacija = lokacija::all('Title', 'Country');
-        $lokacija->pluck('Title', 'Country');
+        //$lokacija = array_values($lokacija);
+        //$lokacija->pluck('Title', 'Country');
         //$lokacija = pluck($lokacija);
         //$lokacija->all();
 
