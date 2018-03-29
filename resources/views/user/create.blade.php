@@ -9,7 +9,7 @@
             <h1>Create New User</h1>
             <hr>
 
-            {!! Form::open(['route' => 'User.store']) !!}
+            {!! Form::open(['action' => 'UserController@store']) !!}
 
             {{Form::label('first_name', 'First name:')}}
             {{Form::text('first_name', null, array('class' => 'form-control'))}}<br>
@@ -24,7 +24,7 @@
             {{Form::password('password', null, array('class' => 'form-control'))}}<br>
 
             {{Form::label('lokacija', 'Lokacija:')}}<br>
-            {{Form::select( 'Title', $lokacija, null, array('class' => 'form-control'))}}<br><br>
+            {{Form::select( 'lokacija', $lokacija, null, array('class' => 'form-control'))}}<br><br>
 
 
 

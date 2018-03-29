@@ -25,7 +25,9 @@ class PrijateljController extends Controller
      */
     public function create()
     {
-        //
+
+        $prijatelj= prijatelji::all('first_name', 'last_name');
+        $prijatelj->pluck('first_name', 'last_name');
     }
 
     /**

@@ -6,10 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class lokacija extends Model
 {
-    //
+
     public function user()
     {
         return $this->belongsTo('App\User');
     }
-
 }

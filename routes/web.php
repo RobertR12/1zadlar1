@@ -15,8 +15,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resource('User','UserController');
-Route::resource('Lokacija','LokacijaController');
-Route::resource('Pretplatnik','PretplatnikController');
-Route::resource('Prijatelj','PrijateljController');
+Route::get('/', 'PagesController@getIndex');
+
+Route::resource('user','UserController');
+Route::resource('lokacija','LokacijaController');
+Route::resource('pretplatnik','PretplatnikController');
+Route::resource('prijatelji','PrijateljController');
+
+Route::get('user', 'PagesController@getUser');
 

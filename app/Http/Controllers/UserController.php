@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 use App\User;
 use App\lokacija;
 
@@ -28,13 +29,22 @@ class UserController extends Controller
     {
 
 
-        $lokacija =lokacija::pluck('Title', 'Country');
+        //$lokacija =lokacija::pluck('Title', 'Country');
+
+        $lokacija = lokacija::all('Title', 'Country');
+        $lokacija->pluck('Title', 'Country');
+        //$lokacija = pluck($lokacija);
+        //$lokacija->all();
 
         //$lokacija = DB::table('lokacije')->get();
+
+        //$lokacija = lokacija::table('lokacijas')->select('Title', 'Country')->get();
 
 
 
         return view('user.create', compact('lokacija'));
+        return redirect('/');
+
     }
 
     /**
@@ -59,14 +69,15 @@ class UserController extends Controller
         $user -> first_name = $request -> first_name;
         $user -> last_name  = $request -> last_name;
         $user -> email      = $request -> email;
-        $user -> password   = $request -> password;
+        $user -> password   = Hash::make($request -> password);
         $user -> lokacija   = $request -> lokacija;
 
         $user ->save();
 
         //Session::flash('success', 'Korisnik uspjesno unesen!');
 
-        return redirect()->route('User.show', $user->id);
+        //return redirect('welcome');
+        return redirect('/');
 
     }
 

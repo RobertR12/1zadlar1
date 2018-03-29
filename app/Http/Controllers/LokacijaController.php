@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Lokacija;
+use App\User;
+
 
 class LokacijaController extends Controller
 {
@@ -23,7 +26,7 @@ class LokacijaController extends Controller
      */
     public function create()
     {
-        //
+        return view('lokacija.create', compact('Lokacija') );
     }
 
     /**
@@ -34,7 +37,24 @@ class LokacijaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, array(
+
+            'Title' => 'required|max:255',
+            'Country'  => 'required|max:255',
+
+        ));
+
+        $lokacija = new Lokacija;
+
+        $lokacija -> Title = $request -> Title;
+        $lokacija -> Country  = $request -> Country;
+
+        $lokacija ->save();
+
+        //Session::flash('success', 'Korisnik uspjesno unesen!');
+
+        //return redirect('welcome');
+        return redirect('/');
     }
 
     /**
