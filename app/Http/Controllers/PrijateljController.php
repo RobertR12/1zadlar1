@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use App\prijatelj;
+use App\User;
+use App\prijatelji;
 
 class PrijateljController extends Controller
 {
@@ -26,8 +27,10 @@ class PrijateljController extends Controller
     public function create()
     {
 
-        $prijatelj= prijatelji::all('first_name', 'last_name');
+        $prijatelj= User::all('first_name', 'last_name');
         $prijatelj->pluck('first_name', 'last_name');
+
+        return view('prijatelji.create', compact('prijatelj'));
     }
 
     /**
@@ -38,7 +41,16 @@ class PrijateljController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $prijatelji = new prijatelji;
+
+        $prijatelji -> User_id = $request -> prijatelj1;
+        $prijatelji -> Friend_id  = $request -> prijatelj2;
+
+
+        $prijatelji ->save();
+
+        return redirect('/');
+
     }
 
     /**

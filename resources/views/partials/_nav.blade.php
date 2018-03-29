@@ -20,7 +20,7 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse navbar-right" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="/">Home</a></li>
+                <li ><a href="/">Home</a></li>
                 <li><a href="user/create">Korisnik</a></li>
                 <li><a href="lokacija/create">Lokacija</a></li>
                 <li><a href="prijatelji/create">Prijatelji</a></li>

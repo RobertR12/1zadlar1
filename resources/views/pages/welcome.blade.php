@@ -16,36 +16,8 @@
 @section('content')
 
     <div class="row">
-        <div class="col-md-8" ">
-        <div class="post">
-            <h3>Post title.</h3>
-            <p>Lorem ipsum laboris nostrud cupidatat occaecat proident mollit esse ullamco reprehenderit dolor incididunt laboris ea mollit...</p>
-            <a href="#" class="btn btn-primary">Read more</a>
-        </div>
-
-        <hr>
-
-        <div class="post">
-            <h3>Post title.</h3>
-            <p>Lorem ipsum laboris nostrud cupidatat occaecat proident mollit esse ullamco reprehenderit dolor incididunt laboris ea mollit...</p>
-            <a href="#" class="btn btn-primary">Read more</a>
-        </div>
-
-        <hr>
-
-        <div class="post">
-            <h3>Post title.</h3>
-            <p>Lorem ipsum laboris nostrud cupidatat occaecat proident mollit esse ullamco reprehenderit dolor incididunt laboris ea mollit...</p>
-            <a href="#" class="btn btn-primary">Read more</a>
-        </div>
-
-        <hr>
-
-        <div class="post">
-            <h3>Post title.</h3>
-            <p>Lorem ipsum laboris nostrud cupidatat occaecat proident mollit esse ullamco reprehenderit dolor incididunt laboris ea mollit...</p>
-            <a href="#" class="btn btn-primary">Read more</a>
-        </div>
+        <div class="col-md-8">
+        <h1>Početna Stranica</h1>
 
     </div>
 
