@@ -5,25 +5,18 @@
 </head>
 <body>
 
-@include('partials._nav')
+    @include('partials._nav')
+
+    <div class="container">
+
+        <div class="container col-md-8">
 
 
+            @include('partials._messages')
+            @yield('content')
 
-<div class="container">
-
-
-
-    <div class="container col-md-8">
-
-
-
-        @yield('content')
+        </div>
 
     </div>
-
-
-
-</div>
-
 </body>
 </html>

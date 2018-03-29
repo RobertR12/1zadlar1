@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use App\User;
 use App\lokacija;
@@ -46,6 +45,7 @@ class UserController extends Controller
         return view('user.create', compact('lokacija'));
         return redirect('/');
 
+
     }
 
     /**
@@ -75,10 +75,14 @@ class UserController extends Controller
 
         $user ->save();
 
+
+
         //Session::flash('success', 'Korisnik uspjesno unesen!');
 
-        //return redirect('welcome');
-        return redirect('/');
+
+
+        //return redirect()->route('user.show', $user->Id);
+       return redirect('/');
 
     }
 
