@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\User;
 use App\pretplatnik;
 use App\prijatelji;
+use Session;
+use DB;
 
 class PretplatnikController extends Controller
 {
@@ -27,9 +29,13 @@ class PretplatnikController extends Controller
     public function create()
     {
 
-        $prijatelj= User::all('first_name', 'last_name');
-        $prijatelj->pluck('first_name', 'last_name');
-        return view('pretplate.create', compact('prijatelj') );
+
+
+        $prijatelj = DB::table('users')->pluck('First_name', 'Id');
+
+       return view('pretplate.create', compact('prijatelj'));
+
+
     }
 
     /**
@@ -48,7 +54,9 @@ class PretplatnikController extends Controller
 
         $pretplata ->save();
 
-        return redirect('/');
+        Session::flash('success', 'Pretplata uspješno unesena!');
+
+        return redirect()->route('pretplatnik.show', $pretplata->id);
     }
 
     /**
@@ -59,7 +67,7 @@ class PretplatnikController extends Controller
      */
     public function show($id)
     {
-        //
+        return view('pretplate.show');
     }
 
     /**
@@ -70,7 +78,7 @@ class PretplatnikController extends Controller
      */
     public function edit($id)
     {
-        //
+
     }
 
     /**

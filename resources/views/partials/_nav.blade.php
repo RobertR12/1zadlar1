@@ -24,7 +24,7 @@
                 <li><a href="/1zadLar1/public/user/create">Korisnik</a></li>
                 <li><a href="/1zadLar1/public/lokacija/create">Lokacija</a></li>
                 <li><a href="/1zadLar1/public/prijatelji/create">Prijatelji</a></li>
-                <li><a href="/1zadLar1/public/pretplate/create">Pretplate</a></li>
+                <li><a href="/1zadLar1/public/pretplatnik/create">Pretplate</a></li>
 
             </ul>
 

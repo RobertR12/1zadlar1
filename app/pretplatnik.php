@@ -10,8 +10,8 @@ class pretplatnik extends Model
         'user_id',
     ];
 
-    public function user()
+    public function User()
     {
-        return $this->belongsTo('App\User');
+        return $this->belongsToMany('App\User');
     }
 }

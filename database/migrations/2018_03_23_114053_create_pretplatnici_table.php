@@ -13,10 +13,10 @@ class CreatePretplatniciTable extends Migration
      */
     public function up()
     {
-        Schema::create('pretplatnici', function (Blueprint $table) {
+        Schema::create('pretplatniks', function (Blueprint $table) {
             $table->increments('Id');
             $table->unsignedInteger('user_id');
-            $table->foreign('user_id')->references('Id')->on('users');
+            $table->foreign('user_id')->references('Id')->on('users')->nullable();
             $table->decimal('Amount', 11,2);
             $table->timestamps();
             $table->softDeletes();
@@ -31,6 +31,6 @@ class CreatePretplatniciTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('pretplatnici');
+        Schema::dropIfExists('pretplatnics');
     }
 }

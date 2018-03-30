@@ -8,7 +8,7 @@
 @endsection
 
 @section('content')
-
+    <?php var_dump($prijatelj); ?>
     <div class="row">
         <div class="col-md-8">
             <h1>Create New Prijateljstvo</h1>
@@ -17,7 +17,7 @@
             {!! Form::open(['action' => 'PrijateljController@store', 'data-parsley-validate' => '']) !!}
 
             {{Form::label('prijatelj1', 'Prijatelj1:')}}<br>
-            {{Form::select( 'prijatelj1', $prijatelj, null, array('class' => 'form-control', 'required' => ''))}}<br><br>
+            {{Form::select( 'prijatelj1', $prijatelj , null, array('class' => 'form-control', 'required' => ''))}}<br><br>
 
             {{Form::label('prijatelj2', 'Prijatelj2:')}}<br>
             {{Form::select( 'prijatelj2', $prijatelj, null, array('class' => 'form-control', 'required' => ''))}}<br><br>

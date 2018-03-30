@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 
 use App\User;
 use App\prijatelji;
+use Session;
+use DB;
 
 class PrijateljController extends Controller
 {
@@ -27,8 +29,19 @@ class PrijateljController extends Controller
     public function create()
     {
 
-        $prijatelj= User::all('first_name', 'last_name');
-        $prijatelj->pluck('first_name', 'last_name');
+//       $prijatelj= User::all('Id','first_name', 'last_name');
+//       $prijatelj->pluck('first_name', 'Id');
+
+
+
+
+
+       //$prijatelj= collect(User::all())->pluck('First_name', 'Last_name');
+
+        //$prijatelj= collect(User::all())->toArray();
+
+        $prijatelj = DB::table('users')->pluck('First_name', 'Id');
+
 
         return view('prijatelji.create', compact('prijatelj'));
     }
@@ -49,7 +62,8 @@ class PrijateljController extends Controller
 
         $prijatelji ->save();
 
-        return redirect('/');
+        Session::flash('success', 'Prijateljstvo uspješno uneseno!');
+        return redirect()->route('prijatelji.show', $prijatelji->id);
 
     }
 
@@ -61,7 +75,7 @@ class PrijateljController extends Controller
      */
     public function show($id)
     {
-        //
+        return view('prijatelji.show');
 
     }
 

@@ -9,4 +9,9 @@ class prijatelji extends Model
     protected $fillable = [
         'User_id', 'Friend_id',
     ];
+
+    public function user()
+    {
+        return $this->belongsToMany('App\User');
+    }
 }

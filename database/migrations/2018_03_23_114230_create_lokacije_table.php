@@ -30,6 +30,6 @@ class CreateLokacijeTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('lokacije');
+        Schema::dropIfExists('lokacijas');
     }
 }

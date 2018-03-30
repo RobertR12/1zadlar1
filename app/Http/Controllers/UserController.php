@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\User;
 use App\lokacija;
+use Session;
+use DB;
 
 class UserController extends Controller
 {
@@ -37,12 +39,11 @@ class UserController extends Controller
 
         //>>$lokacija = lokacija::all('Title', 'Country');
 
-        $lokacija= collect(lokacija::all())
-                    ->pluck('Title');
+//        $lokacija= collect(lokacija::all())
+//                    ->sortBy('Title')
+//                    ->pluck('Title');
 
-
-
-
+        $lokacija = DB::table('lokacijas')->pluck('Title', 'Id');
 
 
         return view('user.create', compact('lokacija'));
@@ -80,12 +81,9 @@ class UserController extends Controller
 
 
 
-        //Session::flash('success', 'Korisnik uspjesno unesen!');
+        Session::flash('success', 'Korisnik uspješno unesen!');
 
-
-
-        //return redirect()->route('user.show', $user->Id);
-       return redirect('/');
+        return redirect()->route('user.show', $user->id);
 
     }
 
@@ -97,7 +95,7 @@ class UserController extends Controller
      */
     public function show($id)
     {
-
+       return view('user.show');
     }
 
     /**

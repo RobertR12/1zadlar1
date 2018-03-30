@@ -1,6 +1,6 @@
 @extends('main')
 
-@section('title', '| View pretplata')
+@section('title', '| View Lokacija')
 
 @section('content')
 

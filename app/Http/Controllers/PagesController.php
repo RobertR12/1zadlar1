@@ -18,4 +18,7 @@ class PagesController extends Controller
     public function getLokacija(){
         return view('lokacija.create');
     }
+    public function getPretplata(){
+        return view('pretplate.create');
+    }
 }

@@ -21,7 +21,7 @@
             {{Form::select( 'prijatelj1', $prijatelj, null, array('class' => 'form-control', 'required' => ''))}}<br><br>
 
             {{Form::label('Amount', 'Iznos pretplate:')}}
-            {{Form::number('Amount', null, array('class' => 'form-control', 'required' => '', , 'maxlength' => '10'))}}<br>
+            {{Form::number('Amount', null, array('class' => 'form-control', 'required' => '', 'maxlength' => '10'))}}<br>
 
 
             {{Form::submit('Create Pretplata', $arrayName = array('class' => 'btn btn-success btn-lg btn-block' , ))}}<br>

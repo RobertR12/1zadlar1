@@ -13,7 +13,7 @@ class CreatePrijateljiTable extends Migration
      */
     public function up()
     {
-        Schema::create('prijatelji', function (Blueprint $table) {
+        Schema::create('prijateljis', function (Blueprint $table) {
             $table->increments('Id');
             $table->unsignedInteger('User_id');
             $table->foreign('User_id')->references('Id')->on('users');
@@ -32,6 +32,6 @@ class CreatePrijateljiTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('prijatelji');
+        Schema::dropIfExists('prijateljis');
     }
 }

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Lokacija;
 use App\User;
+use Session;
 
 
 class LokacijaController extends Controller
@@ -51,10 +52,9 @@ class LokacijaController extends Controller
 
         $lokacija ->save();
 
-        //Session::flash('success', 'Korisnik uspjesno unesen!');
+        Session::flash('success', 'Lokacija uspjesno unesena!');
 
-        //return redirect('welcome');
-        return redirect('/');
+        return redirect()->route('lokacija.show', $lokacija->id);
     }
 
     /**
@@ -65,7 +65,7 @@ class LokacijaController extends Controller
      */
     public function show($id)
     {
-        //
+        return view('lokacija.show');
     }
 
     /**
