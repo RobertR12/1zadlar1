@@ -14,17 +14,17 @@
                 <span class="icon-bar"></span>
 
             </button>
-            <a class="navbar-brand" href="/">Prijatelji</a>
+            <a class="navbar-brand" href="/1zadLar1/public/">Prijatelji</a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse navbar-right" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-                <li ><a href="/">Home</a></li>
-                <li><a href="user/create">Korisnik</a></li>
-                <li><a href="lokacija/create">Lokacija</a></li>
-                <li><a href="prijatelji/create">Prijatelji</a></li>
-                <li><a href="pretplate/create">Pretplate</a></li>
+                <li ><a href="/1zadLar1/public/">Home</a></li>
+                <li><a href="/1zadLar1/public/user/create">Korisnik</a></li>
+                <li><a href="/1zadLar1/public/lokacija/create">Lokacija</a></li>
+                <li><a href="/1zadLar1/public/prijatelji/create">Prijatelji</a></li>
+                <li><a href="/1zadLar1/public/pretplate/create">Pretplate</a></li>
 
             </ul>
 

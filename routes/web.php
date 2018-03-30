@@ -11,16 +11,14 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
 Route::get('/', 'PagesController@getIndex');
+
 
 Route::resource('user','UserController');
 Route::resource('lokacija','LokacijaController');
 Route::resource('pretplatnik','PretplatnikController');
 Route::resource('prijatelji','PrijateljController');
 
-Route::get('user', 'PagesController@getUser');
+
 

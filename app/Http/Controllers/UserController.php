@@ -27,23 +27,26 @@ class UserController extends Controller
     public function create()
     {
 
-
         //$lokacija =lokacija::pluck('Title', 'Country');
-
-        $lokacija = lokacija::all('Title', 'Country');
         //$lokacija = array_values($lokacija);
         //$lokacija->pluck('Title', 'Country');
         //$lokacija = pluck($lokacija);
         //$lokacija->all();
-
-        //$lokacija = DB::table('lokacije')->get();
-
+        //$lokacija = lokacija::table('lokacije')->get();
         //$lokacija = lokacija::table('lokacijas')->select('Title', 'Country')->get();
+
+        //>>$lokacija = lokacija::all('Title', 'Country');
+
+        $lokacija= collect(lokacija::all())
+                    ->pluck('Title');
+
+
+
 
 
 
         return view('user.create', compact('lokacija'));
-        return redirect('/');
+
 
 
     }
