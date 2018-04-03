@@ -9,7 +9,7 @@
 
     <div class="container">
 
-        <div class="container col-md-8">
+        <div class="container col-md-12">
 
 
             @include('partials._messages')

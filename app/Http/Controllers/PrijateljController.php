@@ -69,6 +69,8 @@ class PrijateljController extends Controller
 
         $prijatelj = DB::table('users')->get();
 
+
+
         return view('prijatelji.create', compact('prijatelj'));
     }
 

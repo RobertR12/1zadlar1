@@ -18,7 +18,13 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+        // create variable and store all users from db
+
+        $users=User::all();
+
+        // return view and pass in the above variable
+
+        return view('user.index')->with('users', $users);
     }
 
     /**
@@ -108,7 +114,17 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //
+        $lokacija = DB::table('lokacijas')->pluck('Title', 'Id');
+
+
+
+        //find the user from db and save it as var
+
+        $user= User::find($id);
+
+        //return a view and pass in the var we prev created
+
+        return view('user.edit')->with('user', $user)->with('lokacija', $lokacija);
     }
 
     /**
@@ -120,7 +136,22 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        //Validate the data
+        $this->validate($request, array(
+
+            'first_name' => 'required|max:255',
+            'last_name'  => 'required|max:255',
+            'email'      => 'required',
+            'lokacija'   => 'required'
+        ));
+
+        //Save the data to db
+        $user = User::find($id);
+
+        $user->first_name =$request->input('first_name');
+        //set flash data with success message
+
+        //redirect with flash data to users.show
     }
 
     /**
@@ -131,7 +162,7 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+
     }
 
 

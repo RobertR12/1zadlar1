@@ -20,11 +20,11 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse navbar-right" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-                <li ><a href="/1zadLar1/public/">Home</a></li>
-                <li><a href="/1zadLar1/public/user/create">Korisnik</a></li>
-                <li><a href="/1zadLar1/public/lokacija/create">Lokacija</a></li>
-                <li><a href="/1zadLar1/public/prijatelji/create">Prijatelji</a></li>
-                <li><a href="/1zadLar1/public/pretplatnik/create">Pretplate</a></li>
+                <li><a class="{{ Request::is('/') ? "active" : "" }}" href="/1zadLar1/public/">Home</a></li>
+                <li><a class="{{ Request::is('user') ? "active" : "" }}" href="/1zadLar1/public/user">Korisnik</a></li>
+                <li><a class="{{ Request::is('lokacjia') ? "active" : "" }}" href="/1zadLar1/public/lokacija/create">Lokacija</a></li>
+                <li><a class="{{ Request::is('prijatelji') ? "active" : "" }}" href="/1zadLar1/public/prijatelji">Prijatelji</a></li>
+                <li><a class="{{ Request::is('pretplatnik') ? "active" : "" }}" href="/1zadLar1/public/pretplatnik/create">Pretplate</a></li>
 
             </ul>
 
