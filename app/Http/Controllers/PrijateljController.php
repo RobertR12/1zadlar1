@@ -29,8 +29,8 @@ class PrijateljController extends Controller
     public function create()
     {
 
-//       $prijatelj= User::all('Id','first_name', 'last_name');
-//       $prijatelj->pluck('first_name', 'Id');
+        //$prijatelj= User::all('Id','first_name', 'last_name');
+        //$prijatelj->pluck('first_name', 'Id');
 
 
 
@@ -40,8 +40,34 @@ class PrijateljController extends Controller
 
         //$prijatelj= collect(User::all())->toArray();
 
-        $prijatelj = DB::table('users')->pluck('First_name', 'Id');
+        //>>$prijatelj = DB::table('users')->get();
 
+
+        //$prijatelj= User::all('First_name', 'Last_name');
+
+        //$prijatelj = User::all();
+        //$prijatelj= $prijatelj->toArray();
+
+        //$prijatelj= DB::table('users')->select('First_name', 'Last_name')->get();
+
+        /*$prijatelji = User::all();
+        $prijatelj = array();
+
+
+        foreach ($prijatelji as $pri)
+        {
+            $prijatelj[]['Id']= $pri->attributes['Id'];
+            $prijatelj[]['First_name']= $pri->attributes['First_name'];
+        }
+
+        return User::make( array($prijatelj));*/
+
+
+
+        //$prijatelj = User::find();
+       // return view('user.show')->with('user', $prijatelj);
+
+        $prijatelj = DB::table('users')->get();
 
         return view('prijatelji.create', compact('prijatelj'));
     }

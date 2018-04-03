@@ -4,5 +4,6 @@
 
 @section('content')
 
-    <p class="lead">Dummy korisnik</p>
+        <h1>{{ $user->First_name }}<?php echo " ";?>{{ $user->Last_name }}</h1>
+    <p class="lead">{{ $user->email }}</p>
 @endsection
