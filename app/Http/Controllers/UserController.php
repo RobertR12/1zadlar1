@@ -95,7 +95,7 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-       // $lokacija = DB::table('lokacijas')->pluck('Title', 'Id');
+       $lokacija = DB::table('lokacijas')->pluck('Title', 'Id');
 
 
 
@@ -106,7 +106,7 @@ class UserController extends Controller
 
         //return a view and pass in the var we prev created
 
-        return view('user.edit')->with('user', $user);
+        return view('user.edit')->with('user', $user)->with('lokacija', $lokacija);
     }
 
     /**
@@ -121,21 +121,21 @@ class UserController extends Controller
         //Validate the data
         $this->validate($request, array(
 
-            'first_name'=>'required|max:100',
-            'last_name'=>'required|max:100',
-            'email'=>'required',
-            'password'=>'required',
-            'lokacija'=>'required'
+            'First_name'=>'required|max:100',
+            'Last_name'=>'required|max:100',
+            'Email'=>'required',
+            'Password'=>'required',
+            'Lokacija'=>'required'
         ));
 
         //Save the data to db
         $user = User::find($id);
 
-        $user->first_name = $request->input('first_name');
-        $user->last_name = $request->input('last_name');
-        $user->email = $request->input('email');
-        $user->password = $request->input('password');
-        $user->lokacija = $request->input('lokacija');
+        $user->First_name = $request->input('First_name');
+        $user->Last_name = $request->input('Last_name');
+        $user->Email = $request->input('Email');
+        $user->Password = $request->input('Password');
+        $user->Lokacija = $request->input('Lokacija');
 
         $user->save();
 

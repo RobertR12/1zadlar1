@@ -15,7 +15,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password', 'First_name', 'Last_name', 'Email', 'Password', 'Lokacija',
     ];
 
     /**
@@ -29,17 +29,17 @@ class User extends Authenticatable
 
     public function prijatelj() {
 
-        return $this ->hasMany('App\prijatelj');
+        return $this ->hasMany('App\Prijatelj');
     }
 
     public function lokacija() {
 
-        return $this ->hasOne('App\lokacija');
+        return $this ->hasOne('App\Lokacija');
     }
 
     public function pretplatnik() {
 
-        return $this ->hasMany('App\pretplatnik');
+        return $this ->hasMany('App\Pretplatnik');
     }
 
 }
