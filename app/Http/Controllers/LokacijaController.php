@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Lokacija;
 use App\User;
 use Session;
+use DB;
 
 
 class LokacijaController extends Controller
@@ -17,7 +18,11 @@ class LokacijaController extends Controller
      */
     public function index()
     {
-        //
+        //create variable and store all lokacijas from db
+        $lokacija = Lokacija::all();
+
+        //return view and pass in the variable above
+        return view('lokacija.index')->with('lokacija', $lokacija);
     }
 
     /**
@@ -27,7 +32,7 @@ class LokacijaController extends Controller
      */
     public function create()
     {
-        return view('lokacija.create', compact('Lokacija') );
+        return view('lokacija.create');
     }
 
     /**
@@ -41,16 +46,16 @@ class LokacijaController extends Controller
         $this->validate($request, array(
 
             'Title' => 'required|max:255',
-            'Country'  => 'required|max:255',
+            'Country' => 'required|max:255',
 
         ));
 
         $lokacija = new Lokacija;
 
-        $lokacija -> Title = $request -> Title;
-        $lokacija -> Country  = $request -> Country;
+        $lokacija->Title = $request->Title;
+        $lokacija->Country = $request->Country;
 
-        $lokacija ->save();
+        $lokacija->save();
 
         Session::flash('success', 'Lokacija uspjesno unesena!');
 
@@ -65,7 +70,9 @@ class LokacijaController extends Controller
      */
     public function show($id)
     {
-        return view('lokacija.show');
+        $lokacija = Lokacija::find($id);
+
+        return view('lokacija.show')->with('lokacija', $lokacija);
     }
 
     /**
@@ -76,7 +83,9 @@ class LokacijaController extends Controller
      */
     public function edit($id)
     {
-        //
+        $lokacija = Lokacija::find($id);
+
+        return view('lokacija.edit')->with('lokacija', $lokacija);
     }
 
     /**
@@ -88,7 +97,26 @@ class LokacijaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request,array(
+
+            'Title'=>'required|max:100',
+            'Country'=>'required|max:100'
+        ));
+
+        //save the data to db
+        $lokacija = Lokacija::find($id);
+
+        $lokacija->Title = $request->input('Title');
+        $lokacija->Country = $request->input('Country');
+
+        //set flash data with success message
+
+        Session::flash('success', ' Uspješno ažurirana lokacija!');
+
+        //redirect with flash data to lokacija.show
+
+        return redirect()->route('lokacija.show', $lokacija->$id);
+
     }
 
     /**

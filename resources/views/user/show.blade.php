@@ -29,7 +29,12 @@
 
             </div>
             <div class="col-md-6">
-                {!! Html::linkRoute('user.destroy', 'Delete', array($user->Id), ['class' => 'btn btn-danger btn-block']) !!}
+
+                {!! Form::open(['route'=>['user.destroy', $user->Id], 'method' => 'DELETE']) !!}
+
+                {!! Form::submit('Delete', ['class'  => 'btn btn-danger btn-block'] ) !!}
+
+                {!! Form::close() !!}
             </div>
         </div>
 

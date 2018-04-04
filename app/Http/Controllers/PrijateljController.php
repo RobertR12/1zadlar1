@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\User;
-use App\prijatelji;
+use App\Prijatelji;
 use Session;
 use DB;
 
@@ -18,7 +18,9 @@ class PrijateljController extends Controller
      */
     public function index()
     {
-        //
+        $prijatelji = Prijatelji::all();
+
+        return view('prijatelji.index')->with('prijatelji', $prijatelji);
     }
 
     /**
@@ -28,48 +30,7 @@ class PrijateljController extends Controller
      */
     public function create()
     {
-
-        //$prijatelj= User::all('Id','first_name', 'last_name');
-        //$prijatelj->pluck('first_name', 'Id');
-
-
-
-
-
-       //$prijatelj= collect(User::all())->pluck('First_name', 'Last_name');
-
-        //$prijatelj= collect(User::all())->toArray();
-
-        //>>$prijatelj = DB::table('users')->get();
-
-
-        //$prijatelj= User::all('First_name', 'Last_name');
-
-        //$prijatelj = User::all();
-        //$prijatelj= $prijatelj->toArray();
-
-        //$prijatelj= DB::table('users')->select('First_name', 'Last_name')->get();
-
-        /*$prijatelji = User::all();
-        $prijatelj = array();
-
-
-        foreach ($prijatelji as $pri)
-        {
-            $prijatelj[]['Id']= $pri->attributes['Id'];
-            $prijatelj[]['First_name']= $pri->attributes['First_name'];
-        }
-
-        return User::make( array($prijatelj));*/
-
-
-
-        //$prijatelj = User::find();
-       // return view('user.show')->with('user', $prijatelj);
-
         $prijatelj = DB::table('users')->get();
-
-
 
         return view('prijatelji.create', compact('prijatelj'));
     }
@@ -82,13 +43,19 @@ class PrijateljController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request, array(
+
+            'prijatelj1' => 'required',
+            'prijatelj2' => 'required'
+
+        ));
         $prijatelji = new prijatelji;
 
-        $prijatelji -> User_id = $request -> prijatelj1;
-        $prijatelji -> Friend_id  = $request -> prijatelj2;
+        $prijatelji->User_id = $request->prijatelj1;
+        $prijatelji->Friend_id  = $request->prijatelj2;
 
 
-        $prijatelji ->save();
+        $prijatelji->save();
 
         Session::flash('success', 'Prijateljstvo uspješno uneseno!');
         return redirect()->route('prijatelji.show', $prijatelji->id);
@@ -103,7 +70,10 @@ class PrijateljController extends Controller
      */
     public function show($id)
     {
-        return view('prijatelji.show');
+
+        $prijatelji = Prijatelji::find($id);
+
+        return view('prijatelji.show')->with('prijatelji', $prijatelji);
 
     }
 
@@ -116,6 +86,10 @@ class PrijateljController extends Controller
     public function edit($id)
     {
         //
+        $prijatelji = Prijatelji::find($id);
+        $prijatelj = DB::table('users')->get();
+
+        return view('prijatelji.edit')->with('prijatelji', $prijatelji)->with('prijatelj', $prijatelj);
     }
 
     /**
@@ -127,7 +101,21 @@ class PrijateljController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, array(
+            'prijatelj1' => 'required',
+            'prijatelj2' => 'required'
+        ));
+
+        $prijatelji = Prijatelji::find($id);
+
+        $prijatelji->User_id = $request->input('prijatelj1');
+        $prijatelji->Friend_id= $request->input('prijatelj2');
+
+        $prijatelji->save();
+
+        Session::flash('success', ' Prijateljstvo uspješno ažurirano');
+
+        return redirect()->route('prijatelji.show', $prijatelji->Id);
     }
 
     /**

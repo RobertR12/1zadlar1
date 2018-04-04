@@ -17,14 +17,19 @@
 
             {!! Form::open(['action' => 'PretplatnikController@store', 'data-parsley-validate' => '']) !!}
 
-            {{Form::label('prijatelj1', 'Prijatelj1:')}}<br>
-            {{Form::select( 'prijatelj1', $prijatelj, null, array('class' => 'form-control', 'required' => ''))}}<br><br>
+            {{ Form::label('prijatelj1', 'Prijatelj1:') }}<br><br>
+
+            <select name="prijatelj1">
+                @foreach($prijatelj as $prijatelj1)
+                    <option value='{{$prijatelj1->Id}}'>{{$prijatelj1->First_name}}{{$prijatelj1->Last_name}}</option>
+                @endforeach
+            </select><br><br>
 
             {{Form::label('Amount', 'Iznos pretplate:')}}
             {{Form::number('Amount', null, array('class' => 'form-control', 'required' => '', 'maxlength' => '10'))}}<br>
 
 
-            {{Form::submit('Create Pretplata', $arrayName = array('class' => 'btn btn-success btn-lg btn-block' , ))}}<br>
+            {{Form::submit('Create Pretplata', ['class' => 'btn btn-success btn-lg btn-block' ])}}<br>
 
 
             {!! Form::close() !!}

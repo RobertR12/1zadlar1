@@ -5,7 +5,7 @@
 @section('content')
 
     <div class="row">
-        {!! Form::model($user, ['route'=>['user.update', $user->Id]]) !!}
+        {!! Form::model($user, ['route'=>['user.update', $user->Id], 'method'=>'PUT']) !!}
         <div class="col-md-6">
 
             {{Form::label('First_name', 'First name:')}}<br><br>
@@ -17,8 +17,17 @@
             {{Form::label('Email', 'Email:')}}<br><br>
             {{ Form::text('Email'), null, ["class"=> 'form-control'] }}<br><br>
 
+            {!!Form::label('Password', 'Password:')!!}<br><br>
+            {!!Form::password('Password', null, array('class' => 'form-control', 'required' => ''))!!}<br><br>
+
             {{Form::label('Lokacija', 'Lokacija:')}}<br><br>
             {{ Form::text('Lokacija'), null, ["class"=> 'form-control'] }}
+
+            {{--<select name="lokacija">
+                @foreach($lokacija as $lok)
+                    <option value='{{$lok->Id}}'>{{$lok->title}}</option>
+                @endforeach
+            </select>--}}
 
 
         </div>
@@ -32,7 +41,7 @@
                 <dl class="dl-horizontal">
 
                     <dt>Korisnik ažuriran:</dt>
-                    <dd>{{ date( 'j M, Y H:i', strtotime($user->created_at)) }}</dd>
+                    <dd>{{ date( 'j M, Y H:i', strtotime($user->updated_at)) }}</dd>
                 </dl>
                 <hr>
                 <div class="row">

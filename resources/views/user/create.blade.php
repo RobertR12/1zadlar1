@@ -20,6 +20,8 @@
 
             {!! Form::open(['action' => 'UserController@store', 'data-parsley-validate' => '']) !!}
 
+
+
             {!!Form::label('first_name', 'First name:')!!}
             {!!Form::text('first_name', null, array('class' => 'form-control', 'required' => '', 'maxlength' => '80'))!!}<br>
 

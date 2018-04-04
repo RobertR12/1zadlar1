@@ -4,8 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
-use App\pretplatnik;
-use App\prijatelji;
+use App\Pretplatnik;
+use App\Prijatelji;
 use Session;
 use DB;
 
@@ -18,7 +18,9 @@ class PretplatnikController extends Controller
      */
     public function index()
     {
-        //
+        $pretplata = Pretplatnik::all();
+
+        return view('pretplate.index')->with('pretplata', $pretplata);
     }
 
     /**
@@ -28,13 +30,10 @@ class PretplatnikController extends Controller
      */
     public function create()
     {
+        //$prijatelj = DB::table('users')->pluck('First_name', 'Id');
 
-
-
-        $prijatelj = DB::table('users')->pluck('First_name', 'Id');
-
-       return view('pretplate.create', compact('prijatelj'));
-
+        $prijatelj = DB::table('users')->get();
+        return view('pretplate.create', compact('prijatelj'));
 
     }
 
@@ -46,17 +45,23 @@ class PretplatnikController extends Controller
      */
     public function store(Request $request)
     {
-        $pretplata = new pretplatnik;
+        $this->validate($request, array(
 
-        $pretplata -> User_id = $request -> prijatelj1;
-        $pretplata -> Amount  = $request -> Amount;
+            'prijatelj1' => 'required',
+            'Amount' => 'required'
+        ));
+
+        $pretplata = new Pretplatnik;
+
+        $pretplata-> User_id = $request->prijatelj1;
+        $pretplata-> Amount = $request->Amount;
 
 
-        $pretplata ->save();
+        $pretplata->save();
 
         Session::flash('success', 'Pretplata uspješno unesena!');
 
-        return redirect()->route('pretplatnik.show', $pretplata->id);
+        return redirect()->route('pretplate.show', $pretplata->id);
     }
 
     /**
@@ -67,7 +72,9 @@ class PretplatnikController extends Controller
      */
     public function show($id)
     {
-        return view('pretplate.show');
+        $pretplata = Pretplatnik::find($id);
+
+        return view('pretplate.show')->with('pretplata', $pretplata);
     }
 
     /**
@@ -78,6 +85,10 @@ class PretplatnikController extends Controller
      */
     public function edit($id)
     {
+        $pretplata =  Pretplatnik::find($id);
+        $prijatelj = DB::table('users')->get();
+
+        return view('pretplate.edit')->with('pretplata', $pretplata)->with('prijatelj', $prijatelj);
 
     }
 
@@ -90,7 +101,20 @@ class PretplatnikController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, array(
+
+            'prijatelj1' => 'required',
+            'Amount' => 'required'
+        ));
+
+        $pretplata = Pretplatnik::find($id);
+
+        $pretplata->user_id = $request->input('prijatelj1');
+        $pretplata-> Amount = $request->input('Amount');
+
+        $pretplata->save();
+
+        return redirect()->route('pretplatnik.show', $pretplata->Id);
     }
 
     /**

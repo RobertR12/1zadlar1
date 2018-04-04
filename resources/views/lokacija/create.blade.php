@@ -24,8 +24,7 @@
             {{Form::text('Country', null, array('class' => 'form-control', 'required' => '', 'maxlength' => '70'))}}<br>
 
 
-            {{Form::submit('Create Lokacija', $arrayName = array('class' => 'btn btn-success btn-lg btn-block' , ))}}<br>
-
+            {{Form::submit('Create Lokacija', ['class' => 'btn btn-success btn-lg btn-block' ])}}<br>
 
             {!! Form::close() !!}
         </div>

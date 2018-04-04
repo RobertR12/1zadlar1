@@ -35,28 +35,11 @@ class UserController extends Controller
     public function create()
     {
 
-        //$lokacija =lokacija::pluck('Title', 'Country');
-        //$lokacija = array_values($lokacija);
-        //$lokacija->pluck('Title', 'Country');
-        //$lokacija = pluck($lokacija);
-        //$lokacija->all();
-        //$lokacija = lokacija::table('lokacije')->get();
-        //$lokacija = lokacija::table('lokacijas')->select('Title', 'Country')->get();
-
-        //>>$lokacija = lokacija::all('Title', 'Country');
-
-//        $lokacija= collect(lokacija::all())
-//                    ->sortBy('Title')
-//                    ->pluck('Title');
-
         $lokacija = DB::table('lokacijas')->pluck('Title', 'Id');
 
 
         return view('user.create', compact('lokacija'));
-
-
-
-    }
+   }
 
     /**
      * Store a newly created resource in storage.
@@ -69,27 +52,25 @@ class UserController extends Controller
         $this->validate($request, array(
 
             'first_name' => 'required|max:255',
-            'last_name'  => 'required|max:255',
-            'email'      => 'required',
-            'password'   => 'required',
-            'lokacija'   => 'required'
+            'last_name' => 'required|max:255',
+            'email' => 'required',
+            'password' => 'required',
+            'lokacija' => 'required'
         ));
 
         $user = new User;
 
-        $user -> first_name = $request -> first_name;
-        $user -> last_name  = $request -> last_name;
-        $user -> email      = $request -> email;
-        $user -> password   = Hash::make($request -> password);
-        $user -> lokacija   = $request -> lokacija;
+        $user->first_name = $request->first_name;
+        $user->last_name = $request->last_name;
+        $user->email = $request->email;
+        $user->password = Hash::make($request->password);
+        $user->lokacija = $request->lokacija;
 
-        $user ->save();
-
-
+        $user->save();
 
         Session::flash('success', 'Korisnik uspješno unesen!');
 
-        return redirect()->route('user.show', $user->id);
+        return redirect()->route('user.show', $user->Id);
 
     }
 
@@ -114,7 +95,7 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        $lokacija = DB::table('lokacijas')->pluck('Title', 'Id');
+       // $lokacija = DB::table('lokacijas')->pluck('Title', 'Id');
 
 
 
@@ -122,9 +103,10 @@ class UserController extends Controller
 
         $user= User::find($id);
 
+
         //return a view and pass in the var we prev created
 
-        return view('user.edit')->with('user', $user)->with('lokacija', $lokacija);
+        return view('user.edit')->with('user', $user);
     }
 
     /**
@@ -139,19 +121,30 @@ class UserController extends Controller
         //Validate the data
         $this->validate($request, array(
 
-            'first_name' => 'required|max:255',
-            'last_name'  => 'required|max:255',
-            'email'      => 'required',
-            'lokacija'   => 'required'
+            'First_name'=>'required|max:100',
+            'Last_name'=>'required|max:100',
+            'Email'=>'required',
+            'Password'=>'required',
+            'Lokacija'=>'required'
         ));
 
         //Save the data to db
         $user = User::find($id);
 
-        $user->first_name =$request->input('first_name');
+        $user->First_name = $request->input('First_name');
+        $user->Last_name = $request->input('Last_name');
+        $user->Email = $request->input('Email');
+        $user->Password = $request->input('Password');
+        $user->Lokacija = $request->input('Lokacija');
+
+        $user->save();
+
         //set flash data with success message
+        Session::flash('success', ' Korisnik uspješno ažuriran!');
 
         //redirect with flash data to users.show
+
+        return redirect()->route('user.show', $user->Id);
     }
 
     /**
@@ -163,6 +156,13 @@ class UserController extends Controller
     public function destroy($id)
     {
 
+        $user = User::find($id);
+
+        $user->delete();
+        
+        Session::flash('success', ' Korisnik uspješno izbrisan!');
+
+        return redirect()->route('user.index');
     }
 
 
