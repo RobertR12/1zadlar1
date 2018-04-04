@@ -121,21 +121,21 @@ class UserController extends Controller
         //Validate the data
         $this->validate($request, array(
 
-            'First_name'=>'required|max:100',
-            'Last_name'=>'required|max:100',
-            'Email'=>'required',
-            'Password'=>'required',
-            'Lokacija'=>'required'
+            'first_name'=>'required|max:100',
+            'last_name'=>'required|max:100',
+            'email'=>'required',
+            'password'=>'required',
+            'lokacija'=>'required'
         ));
 
         //Save the data to db
         $user = User::find($id);
 
-        $user->First_name = $request->input('First_name');
-        $user->Last_name = $request->input('Last_name');
-        $user->Email = $request->input('Email');
-        $user->Password = $request->input('Password');
-        $user->Lokacija = $request->input('Lokacija');
+        $user->first_name = $request->input('first_name');
+        $user->last_name = $request->input('last_name');
+        $user->email = $request->input('email');
+        $user->password = $request->input('password');
+        $user->lokacija = $request->input('lokacija');
 
         $user->save();
 
@@ -159,7 +159,7 @@ class UserController extends Controller
         $user = User::find($id);
 
         $user->delete();
-        
+
         Session::flash('success', ' Korisnik uspješno izbrisan!');
 
         return redirect()->route('user.index');

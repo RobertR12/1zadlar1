@@ -8,20 +8,20 @@
         {!! Form::model($user, ['route'=>['user.update', $user->Id], 'method'=>'PUT']) !!}
         <div class="col-md-6">
 
-            {{Form::label('First_name', 'First name:')}}<br><br>
-            {{ Form::text('First_name', null, ["class"=> 'form-control']) }}<br><br>
+            {{Form::label('first_name', 'First name:')}}<br><br>
+            {{ Form::text('first_name', null, ["class"=> 'form-control']) }}<br><br>
 
-            {{Form::label('Last_name', 'Last name:')}}<br><br>
-            {{ Form::text('Last_name', null, ["class"=> 'form-control']) }}<br><br>
+            {{Form::label('last_name', 'Last name:')}}<br><br>
+            {{ Form::text('last_name', null, ["class"=> 'form-control']) }}<br><br>
 
-            {{Form::label('Email', 'Email:')}}<br><br>
-            {{ Form::text('Email'), null, ["class"=> 'form-control'] }}<br><br>
+            {{Form::label('email', 'Email:')}}<br><br>
+            {{ Form::text('email'), null, ["class"=> 'form-control'] }}<br><br>
 
-            {!!Form::label('Password', 'Password:')!!}<br><br>
-            {!!Form::password('Password', null, array('class' => 'form-control', 'required' => ''))!!}<br><br>
+            {!!Form::label('password', 'Password:')!!}<br><br>
+            {!!Form::password('password', null, array('class' => 'form-control', 'required' => ''))!!}<br><br>
 
-            {{Form::label('Lokacija', 'Lokacija:')}}<br><br>
-            {{ Form::text('Lokacija'), null, ["class"=> 'form-control'] }}
+            {{Form::label('lokacija', 'Lokacija:')}}<br><br>
+            {{ Form::text('lokacija'), null, ["class"=> 'form-control'] }}
 
             {{--<select name="lokacija">
                 @foreach($lokacija as $lok)
