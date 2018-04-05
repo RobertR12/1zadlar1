@@ -137,6 +137,12 @@ class UserController extends Controller
         $user->Password = $request->input('Password');
         $user->Lokacija = $request->input('Lokacija');
 
+        /*$user->First_name = $request['First_name'];
+        $user->Last_name = $request['Last_name'];
+        $user->Email = $request['Email'];
+        $user->Password = Hash::make($request['Password']);
+        $user->Lokacija = $request['Lokacija'];*/
+
         $user->save();
 
         //set flash data with success message
