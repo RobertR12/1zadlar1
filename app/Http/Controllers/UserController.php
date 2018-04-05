@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\User;
-use App\lokacija;
+use App\Lokacija;
 use Session;
 use DB;
 
@@ -21,6 +21,8 @@ class UserController extends Controller
         // create variable and store all users from db
 
         $users=User::all();
+
+       // $loka = DB::table('Lokacijas')->where('Id', '=' , $users->Lokacija)->select('Title')->get();
 
         // return view and pass in the above variable
 
@@ -84,7 +86,24 @@ class UserController extends Controller
     {
 
         $user = User::find($id);
-       return view('user.show')->with('user', $user);
+
+        $Npri = DB::table('users as U')
+                    ->leftJoin('prijateljis as F', 'U.Id','=', 'F.User_id')
+                    ->leftJoin('users as N','F.Friend_id', '=', 'N.Id')
+                    ->where('U.Id','=', $id)
+                    ->select('N.First_name as FFname', 'N.Last_name as FLname')
+                    ->get();
+
+        $Npre = DB::table('users as U')
+                        ->join('pretplatniks as UP', 'U.Id', '=', 'UP.user_id')
+                        ->where('UP.user_id', '=', $id)
+                        ->select('UP.Id as ID','UP.Amount as AMA','UP.created_at as CA','UP.updated_at as UA')
+                        ->get();
+
+
+
+
+       return view('user.show')->with('user', $user)->with('Npri', $Npri)->with('Npre', $Npre);
     }
 
     /**
@@ -137,11 +156,9 @@ class UserController extends Controller
         $user->Password = $request->input('Password');
         $user->Lokacija = $request->input('Lokacija');
 
-        /*$user->First_name = $request['First_name'];
-        $user->Last_name = $request['Last_name'];
-        $user->Email = $request['Email'];
-        $user->Password = Hash::make($request['Password']);
-        $user->Lokacija = $request['Lokacija'];*/
+        /*$input = $request->all();
+
+        $user->fill($input)->save();*/
 
         $user->save();
 

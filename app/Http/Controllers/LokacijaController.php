@@ -127,6 +127,12 @@ class LokacijaController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $lokacija = Lokacija::find($id);
+
+        $lokacija->delete();
+
+        Session::flash('success', ' Lokacija uspješno izbrisana!');
+
+        return redirect()->route('lokacija.index');
     }
 }

@@ -16,9 +16,9 @@ class CreatePrijateljiTable extends Migration
         Schema::create('prijateljis', function (Blueprint $table) {
             $table->increments('Id');
             $table->unsignedInteger('User_id');
-            $table->foreign('User_id')->references('Id')->on('users');
+            $table->foreign('User_id')->references('Id')->on('users')->onDelete('cascade');
             $table->unsignedInteger('Friend_id');
-            $table->foreign('Friend_id')->references('Id')->on('users');
+            $table->foreign('Friend_id')->references('Id')->on('users')->onDelete('cascade');
             $table->timestamps();
             $table->softDeletes();
 

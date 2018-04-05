@@ -14,4 +14,6 @@ class pretplatnik extends Model
     {
         return $this->belongsToMany('App\User');
     }
+
+    protected $primaryKey = "Id";
 }

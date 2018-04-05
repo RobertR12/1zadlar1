@@ -126,6 +126,12 @@ class PrijateljController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $prijatelji = Prijatelji::find($id);
+
+        $prijatelji->delete();
+
+        Session::flash('success', ' Prijateljstvo uspješno izbrisan!');
+
+        return redirect()->route('prijatelji.index');
     }
 }

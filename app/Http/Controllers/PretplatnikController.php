@@ -53,13 +53,13 @@ class PretplatnikController extends Controller
 
         $pretplata = new Pretplatnik;
 
-        $pretplata-> User_id = $request->prijatelj1;
-        $pretplata-> Amount = $request->Amount;
+        $pretplata->User_id = $request->prijatelj1;
+        $pretplata->Amount = $request->Amount;
 
 
         $pretplata->save();
 
-        Session::flash('success', 'Pretplata uspješno unesena!');
+        Session::flash('success', ' Pretplata uspješno unesena!');
 
         return redirect()->route('pretplate.show', $pretplata->id);
     }
@@ -110,7 +110,7 @@ class PretplatnikController extends Controller
         $pretplata = Pretplatnik::find($id);
 
         $pretplata->user_id = $request->input('prijatelj1');
-        $pretplata-> Amount = $request->input('Amount');
+        $pretplata->Amount = $request->input('Amount');
 
         $pretplata->save();
 
@@ -125,6 +125,12 @@ class PretplatnikController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $pretplata = Pretplatnik::find($id);
+
+        $pretplata->delete();
+
+        Session::flash('success', ' Pretplata uspješno izbrisana!');
+
+        return redirect()->route('pretplatnik.index');
     }
 }
