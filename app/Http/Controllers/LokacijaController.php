@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Lokacija;
 use App\User;
 use Session;
+use Mapper;
 use DB;
 
 
@@ -32,6 +33,8 @@ class LokacijaController extends Controller
      */
     public function create()
     {
+
+
         return view('lokacija.create');
     }
 

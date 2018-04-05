@@ -29,6 +29,8 @@
             {!! Form::close() !!}
         </div>
     </div>
+
+
 @section('scripts')
 
     {!! Html::script('js/parsley.min.js') !!}
