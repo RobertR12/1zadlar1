@@ -19,7 +19,7 @@
                 <dl class="dl-horizontal">
 
                     <dt>Lokacija ažurirana:</dt>
-                    <dd>{{ date( 'j M, Y H:i', strtotime($lokacija->created_at)) }}</dd>
+                    <dd>{{ date( 'j M, Y H:i', strtotime($lokacija->updated_at)) }}</dd>
                 </dl>
                 <hr>
                 <div class="row">

@@ -33,7 +33,7 @@ class LokacijaController extends Controller
      */
     public function create()
     {
-
+        Mapper::map(45.82177,17.396965, ['draggable' => true]);
 
         return view('lokacija.create');
     }
@@ -57,12 +57,14 @@ class LokacijaController extends Controller
 
         $lokacija->Title = $request->Title;
         $lokacija->Country = $request->Country;
+        $lokacija->longt = $request->longt;
+        $lokacija->langt = $request->langt;
 
         $lokacija->save();
 
         Session::flash('success', 'Lokacija uspjesno unesena!');
 
-        return redirect()->route('lokacija.show', $lokacija->id);
+        return redirect()->route('lokacija.show', $lokacija->Id);
     }
 
     /**
@@ -112,13 +114,16 @@ class LokacijaController extends Controller
         $lokacija->Title = $request->input('Title');
         $lokacija->Country = $request->input('Country');
 
+
+        $lokacija->save();
+
         //set flash data with success message
 
         Session::flash('success', ' Uspješno ažurirana lokacija!');
 
         //redirect with flash data to lokacija.show
 
-        return redirect()->route('lokacija.show', $lokacija->$id);
+        return redirect()->route('lokacija.show', $lokacija->Id);
 
     }
 
