@@ -15,9 +15,6 @@
             <h1>Create New Lokacija</h1>
             <hr>
 
-
-
-
             <div id="locationField">
                 <h3>Pretraži grad: </h3>
                 <input id="autocomplete" placeholder="Enter your address" type="text" onfocus="initialize()" class="form-control"></input>
@@ -25,40 +22,29 @@
 
             <hr style="border-width: medium; color: #0cff3f">
 
+         {!! Form::open(['action' => 'LokacijaController@store', 'data-parsley-validate' => '']) !!}
+
+                {{Form::label('Title', 'Title:')}}
+                {{Form::text('Title', null, ['class' => 'form-control', 'required' => '', 'maxlength' => '70'])}}<br>
+
+                {{Form::label('Country', 'Country:')}}
+                {{Form::text('Country', null, ['class' => 'form-control', 'required' => '', 'maxlength' => '70'])}}<br>
+
+                {{Form::label('longt', 'Longt:')}}
+                {{Form::text('longt', null, ['class' => 'form-control', 'required' => '', 'maxlength' => '70'])}}<br>
+
+                {{Form::label('langt', 'Langt:')}}
+                {{Form::text('langt', null, ['class' => 'form-control', 'required' => '', 'maxlength' => '70'])}}<br>
 
 
-                    {!! Form::open(['action' => 'LokacijaController@store', 'data-parsley-validate' => '']) !!}
-
-
-
-            {{Form::label('Title', 'Title:')}}
-            {{Form::text('Title', null, ['class' => 'form-control', 'required' => '', 'maxlength' => '70'])}}<br>
-
-            {{Form::label('Country', 'Country:')}}
-            {{Form::text('Country', null, ['class' => 'form-control', 'required' => '', 'maxlength' => '70'])}}<br>
-
-            {{Form::label('longt', 'Longt:')}}
-            {{Form::text('longt', null, ['class' => 'form-control', 'required' => '', 'maxlength' => '70'])}}<br>
-
-            {{Form::label('langt', 'Langt:')}}
-            {{Form::text('langt', null, ['class' => 'form-control', 'required' => '', 'maxlength' => '70'])}}<br>
-
-
-            {{Form::submit('Create Lokacija', ['class' => 'btn btn-success btn-lg btn-block' ])}}<br>
-
-            {!! Form::close() !!}
+                {{Form::submit('Create Lokacija', ['class' => 'btn btn-success btn-lg btn-block' ])}}<br>
+         {!! Form::close() !!}
         </div>
     </div>
 
+    <div id="map" style="height: 500px; width: 700px"></div>
 
 
-
-    <div id="map1">
-        {!! Mapper::render() !!}
-    </div>
-    <div id="map">
-
-    </div>
 
 
 {{--RADI za popunjavanje forme--}}
@@ -106,8 +92,6 @@
             document.getElementById("Country").value = puno2[1];
 
 
-
-
             for (var component in componentForm) {
             document.getElementById(component).value = '';
             document.getElementById(component).disabled = false;
@@ -144,8 +128,56 @@
             }
 
             }
+            function initMap() {
+                var originalMapCenter = new google.maps.LatLng(-25.363882, 131.044922);
+                var map = new google.maps.Map(document.getElementById('map'), {
+                    zoom: 4,
+                    center: originalMapCenter
+                });
+
+                var infowindow = new google.maps.InfoWindow({
+                    content: 'Change the zoom level',
+                    position: originalMapCenter
+                });
+                infowindow.open(map);
+
+                map.addListener('place_changed', function() {
+
+                    infowindow.close();
+                    marker.setVisible(false);
+                    var place = autocomplete.getPlace();
+                    if (!place.geometry) {
+                        // User entered the name of a Place that was not suggested and
+                        // pressed the Enter key, or the Place Details request failed.
+                        window.alert("No details available for input: '" + place.name + "'");
+                        return;
+                    }
+
+                    // If the place has a geometry, then present it on a map.
+                    if (place.geometry.viewport) {
+                        map.fitBounds(place.geometry.viewport);
+                    } else {
+                        map.setCenter(place.geometry.location);
+                        map.setZoom(17);  // Why 17? Because it looks good.
+                    }
+                    marker.setPosition(place.geometry.location);
+                    marker.setVisible(true);
+                });
+
+
+
+
+
+                /*------------------------------------------------*/
+
+                }
+
 
 
     </script>
+
+    <script async defer type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBQObSGMLkHVBcpp2C6CwUk_RizyyzhncE&libraries=places&callback=initMap"></script>
+
+
 
 @endsection
