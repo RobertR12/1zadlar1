@@ -114,7 +114,7 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-       $lokacija = DB::table('lokacijas')->pluck('Title', 'Id');
+       $lokacija = DB::table('lokacijas')->pluck('Title', 'Title');
 
 
 
