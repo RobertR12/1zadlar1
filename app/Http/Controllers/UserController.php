@@ -37,7 +37,7 @@ class UserController extends Controller
     public function create()
     {
 
-        $lokacija = DB::table('lokacijas')->pluck('Title', 'Id');
+        $lokacija = DB::table('lokacijas')->pluck('Title', 'Title');
 
 
         return view('user.create', compact('lokacija'));
