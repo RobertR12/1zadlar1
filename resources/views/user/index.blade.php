@@ -35,7 +35,9 @@
                             <th>{{ $user->Id }}</th>
                             <td>{{ $user->First_name }}</td>
                             <td>{{ $user->Last_name }}</td>
-                            <td>{{ $user->Lokacija }}</td>
+                            <td>{{ $user->Email }}</td>
+                            <td>{{ $user->Email }}</td>
+                            <td> {{$user->lokacija->Title}}</td>
                             <td>{{ date('j M, Y, H:i', strtotime($user->created_at )) }}</td>
                             <td>{{ date('j M, Y, H:i', strtotime($user->updated_at )) }}</td>
 

@@ -15,5 +15,10 @@ class pretplatnik extends Model
         return $this->belongsToMany('App\User');
     }
 
+    public function user1()
+    {
+        return $this->hasOne('App\User', 'Id', 'user_id');
+    }
+
     protected $primaryKey = "Id";
 }

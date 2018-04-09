@@ -29,12 +29,12 @@ class User extends Authenticatable
 
     public function prijatelj() {
 
-        return $this ->hasMany('App\Prijatelj');
+        return $this ->hasMany('App\Prijatelj', 'Id', 'User_id');
     }
 
     public function lokacija() {
 
-        return $this ->hasOne('App\Lokacija');
+        return $this ->hasOne('App\Lokacija', 'Id', 'Lokacija');
     }
 
     public function pretplatnik() {

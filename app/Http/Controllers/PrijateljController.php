@@ -18,7 +18,9 @@ class PrijateljController extends Controller
      */
     public function index()
     {
-        $prijatelji = Prijatelji::all();
+        $prijatelji = Prijatelji::with('user')->get();
+
+        //dd($prijatelji);
 
         return view('prijatelji.index')->with('prijatelji', $prijatelji);
     }

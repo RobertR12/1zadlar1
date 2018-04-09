@@ -18,7 +18,7 @@ class PretplatnikController extends Controller
      */
     public function index()
     {
-        $pretplata = Pretplatnik::all();
+        $pretplata = Pretplatnik::with('user1')->get();
 
         return view('pretplate.index')->with('pretplata', $pretplata);
     }
@@ -61,7 +61,7 @@ class PretplatnikController extends Controller
 
         Session::flash('success', ' Pretplata uspješno unesena!');
 
-        return redirect()->route('pretplate.show', $pretplata->id);
+        return redirect()->route('pretplatnik.show', $pretplata->id);
     }
 
     /**

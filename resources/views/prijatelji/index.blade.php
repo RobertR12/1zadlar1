@@ -21,8 +21,8 @@
             <table class="table">
                 <thead>
                 <th>#</th>
-                <th>User_id</th>
-                <th>Friend_id</th>
+                <th>Korisnik</th>
+                <th>Prijatelj</th>
                 <th>Created_at</th>
                 <th>Updated_at</th>
                 <th></th>
@@ -31,8 +31,8 @@
                 @foreach($prijatelji as $pri)
                     <tr>
                         <th>{{ $pri->Id }}</th>
-                        <td>{{ $pri->User_id }}</td>
-                        <td>{{ $pri->Friend_id }}</td>
+                        <td>{{ $pri->user->First_name }}<?php echo " ";?> {{ $pri->user->Last_name }}</td>
+                        <td>{{ $pri->user2->First_name}}<?php echo " ";?> {{ $pri->user2->Last_name }}</td>
                         <td>{{ date('j M, Y, H:i', strtotime($pri->created_at )) }}</td>
                         <td>{{ date('j M, Y, H:i', strtotime($pri->updated_at )) }}</td>
 
