@@ -20,12 +20,12 @@
 
             <table class="table">
                 <thead>
-                <th>#</th>
-                <th>Title</th>
-                <th>Country</th>
-                <th>Created_at</th>
-                <th>Updated_at</th>
-                <th></th>
+                    <th>#</th>
+                    <th>Title</th>
+                    <th>Country</th>
+                    <th>Created_at</th>
+                    <th>Updated_at</th>
+                    <th></th>
                 </thead>
                 <tbody>
                 @foreach($lokacija as $lok)

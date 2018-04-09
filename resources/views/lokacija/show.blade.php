@@ -6,7 +6,7 @@
     <div class="row">
         <div class="col-md-6">
 
-            <h1>{{ $lokacija->Title }}<?php echo ", ";?>{{ $lokacija->Country }}</h1>
+            <h1>{{ $lokacija->Title }}, {{ $lokacija->Country }}</h1>
 
         </div>
         <div class="col-md-6">

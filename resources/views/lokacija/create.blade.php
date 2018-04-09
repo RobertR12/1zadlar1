@@ -62,70 +62,79 @@
             };
 
             function initialize() {
-            // Create the autocomplete object, restricting the search
-            // to geographical location types.
-            autocomplete = new google.maps.places.Autocomplete(
-            /** @type {HTMLInputElement} */ (document.getElementById('autocomplete')), {
-            types: ['geocode']
-            });
-            // When the user selects an address from the dropdown,
-            // populate the address fields in the form.
-            google.maps.event.addListener(autocomplete, 'place_changed', function () {
-            fillInAddress();
-            });
+
+                // Create the autocomplete object, restricting the search
+                // to geographical location types.
+
+                autocomplete = new google.maps.places.Autocomplete(
+                /** @type {HTMLInputElement} */
+                    (document.getElementById('autocomplete')), {
+                        types: ['geocode']
+                });
+
+                // When the user selects an address from the dropdown,
+                // populate the address fields in the form.
+
+                google.maps.event.addListener(autocomplete, 'place_changed', function () {
+
+                    fillInAddress();
+                });
             }
 
             // [START region_fillform]
             function fillInAddress() {
-            // Get the place details from the autocomplete object.
-            var place = autocomplete.getPlace();
+                // Get the place details from the autocomplete object.
+                var place = autocomplete.getPlace();
 
-            document.getElementById("longt").value = place.geometry.location.lat();
-            document.getElementById("langt").value = place.geometry.location.lng();
+                document.getElementById("longt").value = place.geometry.location.lat();
+                document.getElementById("langt").value = place.geometry.location.lng();
 
-            var puno = document.getElementById("autocomplete").value;
-            var puno2 = puno.split(", ");
+                var puno = document.getElementById("autocomplete").value;
+                var puno2 = puno.split(", ");
 
+                document.getElementById("Title").value = puno2[0];
+                document.getElementById("Country").value = puno2[1];
 
+                for (var component in componentForm) {
+                    document.getElementById(component).value = '';
+                    document.getElementById(component).disabled = false;
+                }
 
-            document.getElementById("Title").value = puno2[0];
-            document.getElementById("Country").value = puno2[1];
+                // Get each component of the address from the place details
+                // and fill the corresponding field on the form.
+                for (var i = 0; i < place.address_components.length; i++) {
 
+                    var addressType = place.address_components[i].types[0];
 
-            for (var component in componentForm) {
-            document.getElementById(component).value = '';
-            document.getElementById(component).disabled = false;
-            }
+                    if (componentForm[addressType]) {
 
-            // Get each component of the address from the place details
-            // and fill the corresponding field on the form.
-            for (var i = 0; i < place.address_components.length; i++) {
-            var addressType = place.address_components[i].types[0];
-            if (componentForm[addressType]) {
-            var val = place.address_components[i][componentForm[addressType]];
-            document.getElementById(addressType).value = val;
-            }
-            }
+                        var val = place.address_components[i][componentForm[addressType]];
+                        document.getElementById(addressType).value = val;
+                    }
+                }
             }
             // [END region_fillform]
 
             // [START region_geolocation]
             // Bias the autocomplete object to the user's geographical location,
             // as supplied by the browser's 'navigator.geolocation' object.
+
             function geolocate() {
-            if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(function (position) {
-            var geolocation = new google.maps.LatLng(
-            position.coords.latitude, position.coords.longitude);
+                if (navigator.geolocation) {
 
-            var latitude = position.coords.latitude;
-            var longitude = position.coords.longitude;
-            document.getElementById("longt").value = latitude;
-            document.getElementById("langt").value = longitude;
+                navigator.geolocation.getCurrentPosition(function (position) {
 
-            autocomplete.setBounds(new google.maps.LatLngBounds(geolocation, geolocation));
-            });
-            }
+                    var geolocation = new google.maps.LatLng(
+                    position.coords.latitude, position.coords.longitude);
+
+                    var latitude = position.coords.latitude;
+                    var longitude = position.coords.longitude;
+                    document.getElementById("longt").value = latitude;
+                    document.getElementById("langt").value = longitude;
+
+                    autocomplete.setBounds(new google.maps.LatLngBounds(geolocation, geolocation));
+                });
+                }
 
             }
             function initMap() {
@@ -163,13 +172,7 @@
                     marker.setPosition(place.geometry.location);
                     marker.setVisible(true);
                 });
-
-
-
-
-
                 /*------------------------------------------------*/
-
                 }
 
 

@@ -6,9 +6,9 @@
     <div class="row">
         <div class="col-md-6">
 
-            <h1>{{ $pretplata->Id}}</h1>
+            <h1>Pretplata ID: {{ $pretplata->Id}}</h1>
 
-            <p class="lead">{{ $pretplata->Amount }}</p>
+            <h2><p class="lead">{{ $pretplata->Amount }} kn</p></h2>
         </div>
         <div class="col-md-6">
             <div class="well">

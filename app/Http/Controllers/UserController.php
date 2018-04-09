@@ -20,11 +20,7 @@ class UserController extends Controller
     {
         // create variable and store all users from db
 
-        //$users=User::all();
-
         $users = User::with('lokacija')->get();
-        //dd($users);
-       // $loka = DB::table('Lokacijas')->where('Id', '=' , $users->Lokacija)->select('Title')->get();
 
         // return view and pass in the above variable
 
@@ -158,9 +154,6 @@ class UserController extends Controller
         $user->Password = $request->input('Password');
         $user->Lokacija = $request->input('Lokacija');
 
-        /*$input = $request->all();
-
-        $user->fill($input)->save();*/
 
         $user->save();
 

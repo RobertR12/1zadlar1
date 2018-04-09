@@ -21,7 +21,7 @@
             <table class="table">
                 <thead>
                 <th>#</th>
-                <th>User_id</th>
+                <th>Ime i prezime pretplatnika</th>
                 <th>Amount</th>
                 <th>Created_at</th>
                 <th>Updated_at</th>
@@ -31,7 +31,7 @@
                 @foreach($pretplata as $pre)
                     <tr>
                         <th>{{ $pre->Id }}</th>
-                        <td>{{ $pre->user1->First_name }}<?php echo " ";?> {{ $pre->user1->Last_name }}</td>
+                        <td>{{ $pre->user1->First_name }} {{ $pre->user1->Last_name }}</td>
                         <td>{{ $pre->Amount }}</td>
                         <td>{{ date('j M, Y, H:i', strtotime($pre->created_at )) }}</td>
                         <td>{{ date('j M, Y, H:i', strtotime($pre->updated_at )) }}</td>

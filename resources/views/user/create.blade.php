@@ -10,17 +10,12 @@
 
 @section('content')
 
-    <?php //var_dump($lokacija);?>
-
-
     <div class="row">
         <div class="col-md-8">
             <h1>Create New User</h1>
             <hr>
 
             {!! Form::open(['action' => 'UserController@store', 'data-parsley-validate' => '']) !!}
-
-
 
             {!!Form::label('first_name', 'First name:')!!}
             {!!Form::text('first_name', null, array('class' => 'form-control', 'required' => '', 'maxlength' => '80'))!!}<br>
@@ -37,14 +32,7 @@
             {!!Form::label('lokacija', 'Lokacija:')!!}<br>
             {!!Form::select( 'lokacija', $lokacija, null, array('class' => 'form-control', 'required' => ''))!!}<br><br>
 
-
-
-
             {!!Form::submit('Create User', $arrayName = array('class' => 'btn btn-success btn-lg btn-block' , ))!!}<br>
-
-
-
-
 
             {!! Form::close() !!}
         </div>

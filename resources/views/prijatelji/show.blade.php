@@ -6,7 +6,7 @@
     <div class="row">
         <div class="col-md-6">
 
-            <h1> <?php echo "Prijateljstvo između ";?>{{ $prijatelji->User_id }}<?php echo " i ";?>{{ $prijatelji->Friend_id }}</h1>
+            <h1>Prijateljstvo između {{ $prijatelji->user->First_name }} {{ $prijatelji->user->Last_name }} i {{ $prijatelji->user2->First_name}} {{ $prijatelji->user2->Last_name }}</h1>
 
         </div>
         <div class="col-md-6">
@@ -37,11 +37,7 @@
                         {!! Form::close() !!}
                     </div>
                 </div>
-
             </div>
         </div>
-
     </div>
-
-
 @endsection

@@ -19,9 +19,9 @@
 
             {{ Form::label('prijatelj1', 'Prijatelj1:') }}<br><br>
 
-            <select name="prijatelj1">
+            <select name="prijatelj1" class="form-control">
                 @foreach($prijatelj as $prijatelj1)
-                    <option value='{{$prijatelj1->Id}}'>{{$prijatelj1->First_name}}{{$prijatelj1->Last_name}}</option>
+                    <option value='{{$prijatelj1->Id}}'>{{$prijatelj1->First_name}} {{$prijatelj1->Last_name}}</option>
                 @endforeach
             </select><br><br>
 

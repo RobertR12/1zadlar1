@@ -20,8 +20,6 @@ class PrijateljController extends Controller
     {
         $prijatelji = Prijatelji::with('user')->get();
 
-        //dd($prijatelji);
-
         return view('prijatelji.index')->with('prijatelji', $prijatelji);
     }
 

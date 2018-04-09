@@ -30,11 +30,9 @@ class PretplatnikController extends Controller
      */
     public function create()
     {
-        //$prijatelj = DB::table('users')->pluck('First_name', 'Id');
-
         $prijatelj = DB::table('users')->get();
-        return view('pretplate.create', compact('prijatelj'));
 
+        return view('pretplate.create', compact('prijatelj'));
     }
 
     /**

@@ -23,8 +23,6 @@
             {{Form::label('Lokacija', 'Lokacija:')}}<br><br>
             {{ Form::select('Lokacija', $lokacija ,null, ['class' => 'form-control'] )}}
 
-
-
         </div>
         <div class="col-md-6">
             <div class="well">

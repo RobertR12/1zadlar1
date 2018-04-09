@@ -6,7 +6,7 @@
 <div class="row">
     <div class="col-md-6">
 
-        <h1>{{ $user->First_name }}<?php echo " ";?>{{ $user->Last_name }}</h1>
+        <h1>{{ $user->First_name }} {{ $user->Last_name }}</h1>
 
         <p class="lead">{{ $user->Email }}</p>
 

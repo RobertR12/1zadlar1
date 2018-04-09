@@ -28,7 +28,10 @@
 
             </ul>
 
-            <ul class="nav navbar-nav navbar-right">
+
+
+            {{-- Desni dropdown, ZAKOMENTIRAN ISPOD--}}
+            {{--<ul class="nav navbar-nav navbar-right">
 
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">My Account <span class="caret"></span></a>
@@ -40,7 +43,8 @@
                         <li><a href="#">Separated link</a></li>
                     </ul>
                 </li>
-            </ul>
+            </ul>--}}
+            {{-- Desni dropdown, ZAKOMENTIRAN GORE--}}
         </div><!-- /.navbar-collapse -->
     </div>
     <!-- /.container-fluid -->
