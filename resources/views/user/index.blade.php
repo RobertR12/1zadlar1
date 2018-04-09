@@ -35,8 +35,7 @@
                             <th>{{ $user->Id }}</th>
                             <td>{{ $user->First_name }}</td>
                             <td>{{ $user->Last_name }}</td>
-                            <td>{{ $user->Email }}</td>
-                            <td><?php $loka = DB::table('Lokacijas')->where('Id', '=' ,$user->Lokacija)->pluck('Title');?> {{$loka}}</td>
+                            <td>{{ $user->Lokacija }}</td>
                             <td>{{ date('j M, Y, H:i', strtotime($user->created_at )) }}</td>
                             <td>{{ date('j M, Y, H:i', strtotime($user->updated_at )) }}</td>
 
