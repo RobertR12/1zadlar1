@@ -34,7 +34,7 @@ class User extends Authenticatable
 
     public function lokacija() {
 
-        return $this ->hasOne('App\Lokacija');
+        return $this ->hasOne('App\Lokacija', 'Id');
     }
 
     public function pretplatnik() {
@@ -43,5 +43,7 @@ class User extends Authenticatable
     }
 
     protected $primaryKey = "Id";
+
+
 
 }

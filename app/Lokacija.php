@@ -13,4 +13,6 @@ class lokacija extends Model
     }
 
     protected $primaryKey = "Id";
+
+
 }
